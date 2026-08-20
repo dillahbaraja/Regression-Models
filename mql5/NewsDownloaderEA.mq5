@@ -1,6 +1,8 @@
 #property strict
 #property version   "3.00"
-#property copyright "OpenAI"
+#property copyright "Copyright 2026, Abdillah Baradja"
+#property link      "dillahbaraja@gmail.com"
+
 
 input group    "Download Range"
 input datetime  InpFromDate       = D'2018.01.01 00:00'; // Start datetime to download
