@@ -1,0 +1,34 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# MT5 compiled binaries
+*.ex5
+
+# Local-only logs
+metaeditor_compile.log
+*.log
+
+# Private / reference-only research files
+*.pdf
+
+# Temporary repair or patch artifacts
+reports/test_sklearn_hgb_patch.onnx
+*_transactions_repaired.csv
+
+# Local datasets and intermediate research outputs
+data/
+dataset/
+models/
+reports/
+
+# Runtime-only Common Files mirrors and manual review folders
+Regression_Assets_Full/
+dataset_full/
+data_full/
+models_full/
+reports_full/
+Assets_full/
+
+# Local debug and helper artifacts
+.git/
