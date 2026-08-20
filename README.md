@@ -27,6 +27,9 @@ The current end-to-end workflow used by the project is summarized below.
 
 ## Repository Layout
 
+- `Dataset/`
+Contains the published training datasets mirrored from the MT5 Common folder, including H1 pair CSVs, the main news-training CSV, and the separate news file used for MT5-style testing.
+
 - `src/`
 Contains the Python pipeline for feature processing, target construction, tuning, training, evaluation, ONNX export, and MT5 runtime export.
 
@@ -39,6 +42,8 @@ Contains the tracked project-level runtime snapshot for the published four-pair 
 ## Data Scope
 
 The published workflow uses a leakage-aware chronological split. Training is driven by historical OHLCV datasets and a train-side news CSV covering `2018-01-01` to `2023-12-31`, while MT5 simulation and forward-style testing use later news files and chart-by-chart indicator values generated directly inside Strategy Tester. The training pipeline remains event-driven rather than bar-driven, and observations are retained only within the configured `0H` to `+2H` post-news window.
+
+The repository-level `Dataset/` snapshot now includes the current CSV inputs mirrored from `C:\Users\dilla\AppData\Roaming\MetaQuotes\Terminal\Common\Files\Regression_Datasets`, plus the MT5 testing news file `NEWS_2024.01.01-2026.06.30_ALL.csv`.
 
 ## Feature Design
 
@@ -122,6 +127,7 @@ This repository keeps `Assets/` as the tracked project snapshot. For publication
 
 The GitHub snapshot is intended to include:
 
+- training and testing datasets in `Dataset/`
 - source code in `src/` and `mql5/`
 - runtime artifacts in `Assets/`
 - latest transaction CSVs inside `Assets/` for audit and comparison
@@ -135,7 +141,7 @@ Some files are intentionally kept local and excluded from GitHub:
 - Python cache files
 - local compile logs such as `metaeditor_compile.log`
 - reference PDFs and non-project reading material
-- local datasets, processed data, training outputs, and report workspaces
+- processed data, training outputs, and report workspaces
 
 These exclusions are for cleanliness and repository relevance only. Local files are not deleted by this setup.
 

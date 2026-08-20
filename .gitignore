@@ -20,7 +20,6 @@ BACKTEST_RESULT_INTERPRETATION.md
 
 # Local datasets and intermediate research outputs
 data/
-dataset/
 models/
 reports/
 
