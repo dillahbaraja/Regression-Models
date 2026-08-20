@@ -2,12 +2,11 @@
 
 ## Training Scope
 
-The current training pipeline is configured to train the following five currency pairs detected from the `dataset` folder:
+The current published training snapshot is aligned with the following four currency pairs:
 
 - `AUDUSD`
 - `EURUSD`
 - `GBPUSD`
-- `NZDUSD`
 - `USDJPY`
 
 Detected dataset files:
@@ -15,7 +14,6 @@ Detected dataset files:
 - `dataset/AUDUSD_H1_Data.csv`
 - `dataset/EURUSD_H1_Data.csv`
 - `dataset/GBPUSD_H1_Data.csv`
-- `dataset/NZDUSD_H1_Data.csv`
 - `dataset/USDJPY_H1_Data.csv`
 - `dataset/NEWS_2018.01.01-2026.06.30_ALL_.csv`
 
@@ -31,7 +29,6 @@ Observed H1 bar coverage in the current pair datasets:
 - `AUDUSD`: `2018-01-02 00:00:00` to `2026-06-30 23:00:00`
 - `EURUSD`: `2018-01-02 00:00:00` to `2026-06-30 23:00:00`
 - `GBPUSD`: `2018-01-02 00:00:00` to `2026-06-30 23:00:00`
-- `NZDUSD`: `2018-01-02 00:00:00` to `2026-06-30 23:00:00`
 - `USDJPY`: `2018-01-02 00:00:00` to `2026-06-30 23:00:00`
 
 ## Train-Test Split
@@ -167,10 +164,9 @@ The current datasets produce the following event-window sample counts after feat
 - `AUDUSD`: total event rows `18901`, train `13718`, test `5183`
 - `EURUSD`: total event rows `21819`, train `15571`, test `6248`
 - `GBPUSD`: total event rows `20031`, train `14215`, test `5816`
-- `NZDUSD`: total event rows `14992`, train `10686`, test `4306`
 - `USDJPY`: total event rows `21338`, train `15249`, test `6089`
 
-These counts confirm that every detected pair currently has non-empty training and testing samples under the configured news-event window.
+These counts confirm that every published pair currently has non-empty training and testing samples under the configured news-event window.
 
 ## Output Locations
 

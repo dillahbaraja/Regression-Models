@@ -40,7 +40,6 @@ echo %TRAIN_NEWS%
 echo Active pairs:
 echo - AUDUSD
 echo - GBPUSD
-echo - NZDUSD
 echo - USDJPY
 echo.
 echo Excluded pairs:
@@ -75,7 +74,7 @@ if not exist "reports\charts" mkdir "reports\charts"
 if not exist "reports\tuning" mkdir "reports\tuning"
 if not exist "data\processed" mkdir "data\processed"
 
-for %%S in (AUDUSD GBPUSD NZDUSD USDJPY) do (
+for %%S in (AUDUSD GBPUSD USDJPY) do (
     del /q "Assets\%%S_H1_*" 2>nul
     del /q "%APPDATA%\MetaQuotes\Terminal\Common\Files\Regression_Assets\%%S_H1_*" 2>nul
     del /q "models\trained\%%S_H1_*" 2>nul
@@ -89,7 +88,7 @@ for %%S in (AUDUSD GBPUSD NZDUSD USDJPY) do (
 echo [5/7] Training active pairs with model-side blacklist suppression...
 echo.
 
-for %%S in (AUDUSD GBPUSD NZDUSD USDJPY) do (
+for %%S in (AUDUSD GBPUSD USDJPY) do (
     set "TRAIN_DATA=%DATASET_DIR%\%%S_H1_Data.csv"
     if not exist "!TRAIN_DATA!" (
         echo Missing OHLCV file:

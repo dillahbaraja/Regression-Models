@@ -183,7 +183,7 @@ The EA is designed to:
 
 ## Trading Result Visuals
 
-The repository also includes cumulative equity curves from the MT5 simulation-based evaluation for the five active currency pairs.
+The repository also includes cumulative equity curves from the MT5 simulation-based evaluation for the four published currency pairs.
 
 ### AUDUSD
 
@@ -196,10 +196,6 @@ The repository also includes cumulative equity curves from the MT5 simulation-ba
 ### GBPUSD
 
 ![GBPUSD cumulative equity curve](figures/cumulative_profit_GBPUSD.png)
-
-### NZDUSD
-
-![NZDUSD cumulative equity curve](figures/cumulative_profit_NZDUSD.png)
 
 ### USDJPY
 
