@@ -209,4 +209,4 @@ The pipeline is ready to run, based on the following checks:
 
 Run:
 
-- `training.bat`
+- `start_training.bat`

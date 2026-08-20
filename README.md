@@ -110,9 +110,9 @@ The `voting` model is retained as the ensemble regression benchmark.
 
 Main training command:
 
-- `training.bat`
+- `start_training.bat`
 
-Other pair-specific or recovery scripts may exist locally for maintenance purposes, but `training.bat` is the primary entry point for the full project pipeline.
+`start_training.bat` is the primary entry point for the current four-pair training pipeline.
 
 ## MT5 Runtime Artifacts
 
