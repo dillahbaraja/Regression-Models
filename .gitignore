@@ -15,6 +15,8 @@ metaeditor_compile.log
 # Temporary repair or patch artifacts
 reports/test_sklearn_hgb_patch.onnx
 *_transactions_repaired.csv
+EVENT_BLACKLIST_CRITERIA.md
+BACKTEST_RESULT_INTERPRETATION.md
 
 # Local datasets and intermediate research outputs
 data/

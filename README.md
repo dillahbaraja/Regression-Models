@@ -14,7 +14,7 @@ The current design combines:
 - H1 OHLCV price data exported from MT5
 - technical indicators already embedded in the dataset files
 - lightweight derived price and volatility features
-- numerical macroeconomic-event features built from the MT5 Economic Calendar
+- numerical macroeconomic-event features built from exported news CSV files
 - leakage-safe train-test splitting
 - Optuna-based hyperparameter tuning
 - ONNX deployment for MT5 simulation and trading
@@ -38,14 +38,7 @@ Contains the tracked project-level runtime snapshot for the published four-pair 
 
 ## Data Scope
 
-The current training and testing workflow is built from historical data spanning January 2018 to June 2026. The active experimental split uses:
-
-- approximately 6 years for training
-- approximately 2.5 years for held-out testing and MT5 simulation
-
-The training pipeline is event-driven rather than bar-driven. Models are trained only on bars that fall within the configured post-news window:
-
-- `0H` to `+2H` from the macroeconomic release time
+The published workflow uses a leakage-aware chronological split. Training is driven by historical OHLCV datasets and a train-side news CSV covering `2018-01-01` to `2023-12-31`, while MT5 simulation and forward-style testing use later news files and chart-by-chart indicator values generated directly inside Strategy Tester. The training pipeline remains event-driven rather than bar-driven, and observations are retained only within the configured `0H` to `+2H` post-news window.
 
 ## Feature Design
 
@@ -79,20 +72,19 @@ The active feature space combines four layers:
 
 The current workflow is:
 
-1. Load the H1 pair dataset from `dataset/`
+1. Load the H1 pair dataset from the local MT5 dataset export folder
 2. Reuse technical indicators already present in the dataset
 3. Add lightweight derived features
-4. Load macroeconomic news data from the MT5 Economic Calendar export
+4. Load the aligned macroeconomic news CSV
 5. Build pair-specific numerical news features
 6. Create the delayed one-step-ahead regression target
 7. Keep only event-window observations
-8. Split chronologically into training and testing sets
-9. Fit preprocessing only on training data
-10. Tune each model family with Optuna
-11. Train final models
-12. Estimate model-specific thresholds from training predictions
-13. Export ONNX and runtime artifacts to `Assets/`
-14. Run the MQL5 EA for MT5 simulation or execution
+8. Fit preprocessing only on training data
+9. Tune each model family with Optuna
+10. Train final models
+11. Estimate model-specific thresholds from training predictions
+12. Export ONNX and runtime artifacts to `Assets/`
+13. Run the MQL5 EA for MT5 simulation or execution
 
 ## Model Families
 
@@ -176,7 +168,7 @@ The active Expert Advisor source is:
 The EA is designed to:
 
 - load ONNX models from the exported runtime artifacts
-- read event-window runtime files
+- read the configured news CSV from the MT5 Common folder
 - trade only during relevant macroeconomic-event windows
 - apply model-specific thresholds
 - log transaction history for later evaluation
